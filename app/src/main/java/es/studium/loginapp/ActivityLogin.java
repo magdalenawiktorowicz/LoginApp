@@ -50,10 +50,8 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
             intentMain.putExtra("nombre", nombre);
             intentMain.putExtra("sharedPrefsClicked", true);
             startActivity(intentMain);
-            // establecer el contenido de la vista en la pantalla de login
-            // para que el usuario la vea cuando pulsa el botón 'atrás'
-            setContentView(R.layout.activity_login);
-        } else {
+        }
+        else {
             // establecer el contenido de la vista de login
             setContentView(R.layout.activity_login);
             // enlazar los elementos del código con los de la vista
@@ -62,6 +60,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
             switchGuardarCredenciales = findViewById(R.id.switchSaveCredentials);
             switchGuardarCredenciales.setChecked(false);
             btnAcceder = findViewById(R.id.btnAcceder);
+            btnAcceder.setEnabled(false);
             btnAcceder.setOnClickListener(this);
             // objeto textWatcher nos permite supervisar cuando el contenido de los editTexts cambia
             TextWatcher textWatcher = new TextWatcher() {
@@ -77,7 +76,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
                         btnAcceder.setEnabled(false);
                     }
                 }
-
                 @Override
                 public void afterTextChanged(Editable s) {
                 }

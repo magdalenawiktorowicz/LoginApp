@@ -3,6 +3,7 @@ package es.studium.loginapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -63,4 +64,15 @@ public class MainActivity extends AppCompatActivity {
         bienvenido.setText(greeting);
     }
 
+     /*cuando el usuario entra directamente a la pantalla principal
+     con preferencias compartidas guardadas
+     y luego las borra y vuelve a la pantalla de login*/
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (!btnBorrarCredenciales.isEnabled()) {
+            Intent intentLogin = new Intent(this, ActivityLogin.class);
+            startActivity(intentLogin);
+        }
+    }
 }
